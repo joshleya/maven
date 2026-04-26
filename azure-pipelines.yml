@@ -1,12 +1,15 @@
 trigger:
-- main # Adjust as per your branch strategy
-pool:
-vmImage: 'ubuntu-latest' # You can use self hosted agent
+- main
+
+pool: kaviagent
+
 steps:
-- task: Maven@3
-displayName: 'Maven Build and Regression Test'
-inputs:
-mavenPomFile: 'pom.xml' # Ensure the correct path to your pom.xml
-goals: 'clean test'
-publishJUnitResults: true # Publish JUnit test results
-testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '*/surefire-reports/TEST-.xml'
+    goals: 'compile test'
