@@ -18,6 +18,6 @@ public class StudentController {
     @PostMapping("/success")
     public String showSuccess(@ModelAttribute Student student, Model model) {
         model.addAttribute("student", student);
-        return "successfully";
+        return "successful";
     }
 }
