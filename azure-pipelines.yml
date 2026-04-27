@@ -1,7 +1,7 @@
 trigger:
 - main
 
-pool: kaviagent
+pool: aronshaagent
 
 steps:
 - task: Maven@4
